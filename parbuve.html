@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pārbūve.lv — Dzīvokļu pārplānošana un pārbūve Rīgā</title>
+<meta name="description" content="Sertificēts arhitektu birojs un būvkomersants. Dzīvokļu pārplānošana, nesošās sienas, lodžiju iestiklošana un projektu legalizācija." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:hsl(38 30% 96%);--fg:hsl(220 38% 11%);--ink-soft:hsl(220 20% 28%);
+  --paper:hsl(38 22% 92%);--card:hsl(38 30% 98%);--muted:hsl(220 14% 38%);
+  --border:hsl(220 14% 84%);--accent:hsl(22 88% 52%);--accent2:hsl(14 82% 44%);
+  --grid:hsl(220 14% 84% / .6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-0.02em;line-height:1.05}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:var(--muted)}
+.rule{height:1px;background:hsl(220 38% 11% / .15);width:100%}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:2px;font-weight:500;font-size:14px;border:1px solid var(--fg);transition:.2s}
+.btn-primary{background:var(--fg);color:var(--bg)}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent)}
+.btn-outline{background:transparent;color:var(--fg)}
+.btn-outline:hover{background:var(--fg);color:var(--bg)}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:hsl(38 30% 96% / .9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1280px;margin:0 auto}
+.logo{font-family:'Fraunces',serif;font-size:22px;font-weight:500;letter-spacing:-0.02em}
+.logo span{color:var(--accent)}
+.nav-links{display:none;gap:28px;font-size:13px;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang{display:flex;gap:4px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.15em}
+.lang button{background:transparent;border:none;color:var(--muted);cursor:pointer;padding:4px 6px;font:inherit;text-transform:uppercase}
+.lang button.active{color:var(--accent);font-weight:600}
+@media(min-width:1024px){.nav-links{display:flex}}
+
+/* HERO */
+.hero{position:relative;padding:80px 0 100px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),linear-gradient(to bottom,var(--grid) 1px,transparent 1px);background-size:80px 80px;opacity:.4;pointer-events:none}
+.hero-tags{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.hero h1{font-size:clamp(48px,9vw,140px);font-weight:300;margin-bottom:48px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-bottom{display:grid;grid-template-columns:1fr;gap:48px;margin-top:64px}
+@media(min-width:768px){.hero-bottom{grid-template-columns:1.2fr 1fr}}
+.hero-lead{font-size:18px;color:var(--ink-soft);max-width:520px;margin-bottom:32px}
+.hero-lead strong{color:var(--fg);font-weight:500}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.hero-caption{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;align-self:end}
+
+/* QUICK */
+.quick{padding:64px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--paper)}
+.quick-grid{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:768px){.quick-grid{grid-template-columns:repeat(3,1fr)}}
+.quick-item{padding:32px 24px;border-right:1px solid var(--border)}
+.quick-item:last-child{border-right:none}
+.quick-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:16px;letter-spacing:.2em}
+.quick-item h3{font-size:24px;margin-bottom:12px}
+.quick-item p{color:var(--ink-soft);font-size:14px;margin-bottom:16px}
+.quick-item a{font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.2em;color:var(--fg);border-bottom:1px solid var(--fg);padding-bottom:2px}
+.quick-item a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* SECTION */
+section{padding:96px 0}
+.section-head{margin-bottom:64px}
+.section-head .eyebrow{margin-bottom:24px;display:block}
+.section-head h2{font-size:clamp(36px,6vw,72px);font-weight:300}
+.section-head h2 em{font-style:italic;color:var(--accent)}
+.section-lead{font-size:18px;color:var(--ink-soft);max-width:640px;margin-top:24px}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:768px){.why-grid{grid-template-columns:repeat(3,1fr)}}
+.why-item{padding:32px;border:1px solid var(--border);background:var(--card)}
+.why-num{font-family:'JetBrains Mono',monospace;font-size:48px;color:var(--accent);font-weight:300;margin-bottom:24px;line-height:1}
+.why-item h3{font-size:28px;margin-bottom:16px}
+.why-item p{color:var(--ink-soft);font-size:15px}
+.why-item .lnk{display:inline-block;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px}
+
+/* STATS */
+.stats{background:var(--fg);color:var(--bg);padding:96px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-v{font-family:'Fraunces',serif;font-size:clamp(56px,8vw,96px);font-weight:300;color:var(--accent);line-height:1;margin-bottom:12px}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:hsl(38 30% 96% / .7)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--border)}
+@media(min-width:768px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+.service{padding:40px 32px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);background:var(--card)}
+.service-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.2em;margin-bottom:24px}
+.service h3{font-size:24px;margin-bottom:12px}
+.service > p{color:var(--ink-soft);font-size:14px;margin-bottom:20px}
+.service ul{list-style:none;font-size:13px;color:var(--ink-soft)}
+.service li{padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px}
+.service li:before{content:"→";color:var(--accent)}
+.service li:last-child{border-bottom:none}
+
+/* OFFERS */
+.offers-list{columns:1;column-gap:48px;list-style:none}
+@media(min-width:768px){.offers-list{columns:2}}
+@media(min-width:1024px){.offers-list{columns:3}}
+.offers-list li{padding:14px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink-soft);break-inside:avoid;display:flex;gap:12px}
+.offers-list li:before{content:"§";color:var(--accent);font-family:'Fraunces',serif}
+
+/* MANIFESTO */
+.manifesto{background:var(--fg);color:var(--bg);padding:120px 0}
+.manifesto h2{font-size:clamp(40px,7vw,84px);font-weight:300;margin-bottom:40px}
+.manifesto h2 em{font-style:italic;color:var(--accent)}
+.manifesto p{font-size:18px;color:hsl(38 30% 96% / .75);max-width:720px;margin-bottom:48px}
+.manifesto ul{list-style:none;display:grid;gap:16px}
+.manifesto li{padding:16px 0;border-bottom:1px solid hsl(38 30% 96% / .15);font-size:15px;display:flex;gap:16px}
+.manifesto li:before{content:"●";color:var(--accent)}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:768px){.process-grid{grid-template-columns:repeat(4,1fr)}}
+.step{padding:32px;border:1px solid var(--border);background:var(--card)}
+.step-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.2em;margin-bottom:32px}
+.step h3{font-size:24px;margin-bottom:12px}
+.step p{color:var(--ink-soft);font-size:14px}
+
+/* TESTIMONIALS */
+.t-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:768px){.t-grid{grid-template-columns:repeat(3,1fr)}}
+.tcard{padding:32px;border:1px solid var(--border);background:var(--card)}
+.tcard p{font-family:'Fraunces',serif;font-size:18px;font-style:italic;color:var(--fg);margin-bottom:24px;line-height:1.4}
+.tcard .who{font-weight:500;font-size:14px}
+.tcard .where{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;margin-top:4px}
+
+/* LOCATIONS */
+.loc-grid{display:grid;grid-template-columns:1fr;gap:48px}
+@media(min-width:768px){.loc-grid{grid-template-columns:1fr 1fr}}
+.loc-list{display:flex;flex-wrap:wrap;gap:8px}
+.loc-list span{padding:8px 16px;border:1px solid var(--border);font-size:13px;background:var(--card)}
+.loc-list .more{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* CONTACT */
+.contact{background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:48px}
+@media(min-width:1024px){.contact-grid{grid-template-columns:1fr 1fr}}
+.cinfo div{padding:20px 0;border-bottom:1px solid var(--border)}
+.cinfo .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;margin-bottom:8px}
+.cinfo .val{font-size:18px;white-space:pre-line}
+form{background:var(--card);padding:32px;border:1px solid var(--border)}
+form h3{font-size:24px;margin-bottom:24px}
+form label{display:block;margin-bottom:16px}
+form .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px;display:block}
+form input,form textarea{width:100%;padding:12px;border:1px solid var(--border);background:var(--bg);font:inherit;font-size:14px;border-radius:2px}
+form textarea{min-height:120px;resize:vertical}
+form button{width:100%;margin-top:8px}
+.disclaimer{font-size:11px;color:var(--muted);margin-top:16px;line-height:1.5}
+
+/* FOOTER */
+footer{background:var(--fg);color:var(--bg);padding:64px 0 32px}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:48px;margin-bottom:48px}
+@media(min-width:768px){.foot-grid{grid-template-columns:2fr 1fr 1fr 1fr}}
+.foot-grid h4{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);margin-bottom:16px;font-weight:500}
+.foot-grid ul{list-style:none}
+.foot-grid li{padding:6px 0;font-size:13px;color:hsl(38 30% 96% / .7)}
+.foot-grid li a:hover{color:var(--accent)}
+.foot-tagline{color:hsl(38 30% 96% / .7);font-size:14px;margin-top:12px;max-width:320px}
+.foot-bottom{border-top:1px solid hsl(38 30% 96% / .15);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:hsl(38 30% 96% / .5)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#" class="logo">Pārbūve<span>.lv</span></a>
+    <nav class="nav-links">
+      <a href="#services" data-t="nav.parplanosana"></a>
+      <a href="#services" data-t="nav.nesosas"></a>
+      <a href="#services" data-t="nav.lodzijas"></a>
+      <a href="#testimonials" data-t="nav.atsauksmes"></a>
+      <a href="#contact" data-t="nav.contact"></a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang">
+        <button data-lang="lv" class="active">LV</button>
+        <span style="color:var(--border)">/</span>
+        <button data-lang="ru">RU</button>
+        <span style="color:var(--border)">/</span>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container" style="position:relative">
+    <div class="hero-tags">
+      <span class="eyebrow" data-t="hero.tag1"></span>
+      <span class="eyebrow" data-t="hero.tag2"></span>
+    </div>
+    <h1>
+      <span data-t="hero.title1"></span> <em data-t="hero.title2"></em><br>
+      <span data-t="hero.title3"></span> <span data-t="hero.title4"></span><br>
+      <em data-t="hero.title5"></em>
+    </h1>
+    <div class="hero-bottom">
+      <div>
+        <p class="hero-lead"><span data-t="hero.lead"></span> <strong data-t="hero.leadStrong"></strong>.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary" data-t="hero.ctaPrimary"></a>
+          <a href="#services" class="btn btn-outline" data-t="hero.ctaSecondary"></a>
+        </div>
+      </div>
+      <div class="hero-caption" data-t="hero.caption1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK -->
+<section class="quick" style="padding:0">
+  <div class="quick-grid" id="quick-grid"></div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="why.eyebrow"></span>
+      <h2><span data-t="why.title1"></span> <em data-t="why.title2"></em></h2>
+    </div>
+    <div class="why-grid" id="why-grid"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid" id="stats-grid"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="services.eyebrow"></span>
+      <h2><span data-t="services.title1"></span> <em data-t="services.title2"></em></h2>
+      <p class="section-lead" data-t="services.lead"></p>
+    </div>
+  </div>
+  <div class="services-grid" id="services-grid"></div>
+</section>
+
+<!-- OFFERS -->
+<section style="background:var(--paper);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="offers.eyebrow"></span>
+      <h2><span data-t="offers.title1"></span> <em data-t="offers.title2"></em></h2>
+      <p class="section-lead" data-t="offers.lead"></p>
+    </div>
+    <ul class="offers-list" id="offers-list"></ul>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--accent)" data-t="manifesto.eyebrow"></span>
+    <h2 style="margin-top:24px"><span data-t="manifesto.title1"></span> <em data-t="manifesto.title2"></em></h2>
+    <p data-t="manifesto.lead"></p>
+    <ul id="manifesto-list"></ul>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="process.eyebrow"></span>
+      <h2><span data-t="process.title1"></span> <em data-t="process.title2"></em></h2>
+    </div>
+    <div class="process-grid" id="process-grid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--paper);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="testimonials.eyebrow"></span>
+      <h2><span data-t="testimonials.title1"></span> <em data-t="testimonials.title2"></em></h2>
+    </div>
+    <div class="t-grid" id="t-grid"></div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="locations.eyebrow"></span>
+      <h2><span data-t="locations.title1"></span> <em data-t="locations.title2"></em></h2>
+      <p class="section-lead" data-t="locations.lead"></p>
+    </div>
+    <div class="loc-list" id="loc-list"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-t="contact.eyebrow"></span>
+      <h2><span data-t="contact.title1"></span> <em data-t="contact.title2"></em></h2>
+      <p class="section-lead" data-t="contact.lead"></p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo">
+        <div><div class="lbl" data-t="contact.labels.phone"></div><div class="val"><a href="tel:+37128343227">+371 28 343 227</a></div></div>
+        <div><div class="lbl" data-t="contact.labels.email"></div><div class="val"><a href="mailto:info@parbuve.lv">info@parbuve.lv</a></div></div>
+        <div><div class="lbl" data-t="contact.labels.address"></div><div class="val" data-t="contact.addressVal"></div></div>
+        <div><div class="lbl" data-t="contact.labels.hours"></div><div class="val" data-t="contact.hoursVal"></div></div>
+        <div style="border:none"><a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/37128343227" data-t="contact.whatsapp"></a></div>
+      </div>
+      <form id="contact-form">
+        <h3 data-t="contact.form.title"></h3>
+        <label><span class="lbl" data-t="contact.form.name"></span><input name="name" required></label>
+        <label><span class="lbl" data-t="contact.form.phone"></span><input name="phone" required></label>
+        <label><span class="lbl" data-t="contact.form.email"></span><input type="email" name="email" required></label>
+        <label><span class="lbl" data-t="contact.form.message"></span><textarea name="message"></textarea></label>
+        <button type="submit" class="btn btn-primary" data-t="contact.form.submit"></button>
+        <p class="disclaimer" data-t="contact.form.disclaimer"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:var(--bg);font-size:28px">Pārbūve<span style="color:var(--accent)">.lv</span></div>
+        <p class="foot-tagline" data-t="footer.tagline"></p>
+      </div>
+      <div>
+        <h4 data-t="footer.services"></h4>
+        <ul id="foot-services"></ul>
+      </div>
+      <div>
+        <h4 data-t="footer.links"></h4>
+        <ul>
+          <li><a href="#why" data-t="why.title1"></a></li>
+          <li><a href="#testimonials" data-t="nav.atsauksmes"></a></li>
+          <li><a href="https://bis.gov.lv" target="_blank" rel="noopener" data-t="footer.bisRegistry"></a></li>
+          <li><a href="#" data-t="footer.privacy"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-t="footer.contact"></h4>
+        <ul>
+          <li><a href="tel:+37128343227">+371 28 343 227</a></li>
+          <li><a href="mailto:info@parbuve.lv">info@parbuve.lv</a></li>
+          <li data-t="contact.addressVal" style="white-space:pre-line"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© SIA Arhitekt · 2011–2026</span>
+      <span data-t="footer.rights"></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const T = {"lv":{"nav":{"parplanosana":"Pārplānošana","grids":"Betona grīdas","legalizacija":"Legalizācija","apvienosana":"Apvienošana","nesosas":"Nesošās sienas","lodzijas":"Lodžijas","atsauksmes":"Atsauksmes","contact":"Kontakti","whatsapp":"WhatsApp"},"hero":{"tag1":"Rīga · Est. 2011","tag2":"Sertificēts būvkomersants","title1":"Pārbūvējam","title2":"dzīvokļus","title3":"ar","title4":"projektu, ne","title5":"improvizāciju.","lead":"Arhitektu birojs un sertificēts būvkomersants Latvijā. Pārplānošanas projekti, saskaņošana un izpildījums — no","leadStrong":"vienas darba dienas","ctaPrimary":"Saņemt konsultāciju","ctaSecondary":"Pakalpojumi","caption1":"01 — Projekts Nr. 2177 / Āgenskalns"},"quick":[{"t":"Vienkāršotā dzīvokļa pārbūve","s":"Ar paziņojuma iesniegšanu un apliecinājuma karti.","more":"Uzzināt vairāk"},{"t":"Durvju ailu izveide","s":"Ar paskaidrojuma rakstu un inženiertehnisku risinājumu.","more":"Uzzināt vairāk"},{"t":"Lodžiju iestiklošana","s":"Ar vai bez pievienošanas dzīvoklim.","more":"Uzzināt vairāk"}],"why":{"eyebrow":"§ 01 — Kādēļ Parbūve.lv","title1":"Trīs iemesli","title2":"izvēlēties mūs.","reasons":[{"title":"Ātrums","desc":"Gatavi projekti minimālos termiņos — no 1 darba dienas."},{"title":"Kvalitāte","desc":"Sertificēts būvkomersants, sertificēts arhitekts un būvinženieris.","linkLabel":"Pārbaudīt BIS reģistrā"},{"title":"Pieredze","desc":"Gadiem veidotā pieredze ļauj būt par vienu no līderiem Latvijas tirgū."}]},"stats":[{"v":"4 090","l":"Realizēti projekti"},{"v":"3 998","l":"Apmierināti klienti"},{"v":"14","l":"Gadu pieredze"},{"v":"1","l":"Darba diena minimums"}],"services":{"eyebrow":"§ 02 — Pakalpojumi","title1":"Viss process","title2":"zem viena jumta.","lead":"No idejas līdz aktam par pieņemšanu ekspluatācijā. Sertificēts arhitekts un būvinženieris pārņem visu birokrātiju — Jūs saņemat gatavu, legālu rezultātu.","list":[{"title":"Pārplānošana","desc":"Dzīvokļa pārplānošanas projekts un saskaņošana — dokumenti, izmaksas un pilns process.","items":["Pārplānošanas projekts","Dokumenti un izmaksas","Saskaņošana ar pašvaldību"]},{"title":"Nesošās sienas","desc":"Durvju ailu izveide nesošās sienās ar paskaidrojuma rakstu un inženiertehnisku risinājumu.","items":["Paskaidrojuma raksts","Inženiera aprēķini","Stiegrojuma risinājumi"]},{"title":"Lodžiju iestiklošana","desc":"Iestiklošana ar vai bez pievienošanas dzīvoklim — projekts, atļaujas, izpildījums.","items":["Projekts un atļaujas","Ar/bez pievienošanas","Siltināšana"]},{"title":"Dzīvokļu apvienošana","desc":"Divu vai vairāku dzīvokļu apvienošanas projekts un pilna saskaņošana.","items":["Apvienošanas projekts","Komunikāciju risinājumi","Reģistrācija"]},{"title":"Legalizācija","desc":"Jau veiktas pārbūves vai pārplānošanas legalizācija un inventarizācijas lieta.","items":["Pārplānošanas legalizācija","Pārbūves legalizācija","Inventarizācijas lieta"]},{"title":"Betona grīdas","desc":"Skaņas izolācija, izlīdzināšana un betona grīdu liešana atbilstoši normatīviem.","items":["Skaņas izolācija","Izlīdzināšana","Betona liešana"]}]},"offers":{"eyebrow":"§ 03 — Konsultācijas","title1":"Mūsu arhitektu birojs","title2":"piedāvā:","lead":"Pilns pakalpojumu klāsts — no pirmās konsultācijas līdz inventarizācijas lietai.","items":["Dzīvokļa pārplānošanas projekts un saskaņošana","Dzīvokļa pārplānošanas dokumenti un izmaksas","Pārplānošanas legalizācija un inventarizācijas lieta","Dzīvokļa pārbūves projekts un saskaņošana","Dzīvokļa pārbūves legalizācija un inventarizācijas lieta","Sērijveida dzīvokļu plāni un pārplānošana","Saskaņojuma saņemšana ar paziņojuma iesniegšanu","Inventarizācijas lieta — izmaksas, izgatavošana, pasūtīšana","Apliecinājuma karte vienkāršotai pārbūvei","Durvju ailu izveide nesošās sienās","Lodžiju iestiklošana ar/bez pievienošanas","Konsultācijas par tehniskajām iespējām"]},"manifesto":{"eyebrow":"§ 04 — Filozofija","title1":"Katra siena ir","title2":"aprēķins.","lead":"Mēs nestrādājam ar minējumiem. Katrs nesošās sienas griezums, katra paplašināta aila — sertificēta inženiera aprēķins un saskaņots projekts.","bullets":["Sertificēts būvkomersants (BIS reģistrs Nr. 11881)","Sertificēts arhitekts un būvinženieris","Pilna dokumentācija un saskaņošana ar pašvaldību","Garantija visiem izpildītajiem darbiem"]},"process":{"eyebrow":"§ 05 — Process","title1":"Četri soļi","title2":"no idejas līdz atslēgai.","step":"STEP","steps":[{"t":"Konsultācija","d":"Bezmaksas saruna par Jūsu vīziju, dzīvokļa tehniskajām iespējām un orientējošo budžetu."},{"t":"Projekts","d":"Arhitekta plāns, inženiera aprēķini un nepieciešamā dokumentācija."},{"t":"Saskaņošana","d":"Iesniedzam un saskaņojam visu pašvaldībā un BIS sistēmā Jūsu vietā."},{"t":"Izpildījums","d":"Mūsu būvbrigāde realizē projektu — tīri, droši un termiņos."}]},"projects":{"eyebrow":"§ 06 — Atlasīti darbi","title":"Nesenie projekti","seeAll":"Skatīt visus →","one":{"title":"Lodžija ar pievienošanu","sub":"Skanstes iela · 2 istabu dzīvoklis"},"two":{"title":"Aila nesošā sienā","sub":"Purvciems · 602. sērijas māja"}},"testimonials":{"eyebrow":"§ 07 — Atsauksmes","title1":"Ko saka","title2":"mūsu klienti.","list":[{"name":"Anna K.","location":"Rīga, Imanta","text":"Profesionāla komanda — pārplānošanas projekts bija gatavs 2 dienās, saskaņošana noritēja bez aizķeršanās."},{"name":"Jānis B.","location":"Rīga, Purvciems","text":"Izveidoja durvju ailu nesošajā sienā 602. sērijas mājā. Aprēķini, dokumenti un izpildījums — viss vienuviet."},{"name":"Marina S.","location":"Jūrmala","text":"Apvienoja divus dzīvokļus vienā. Paldies par detalizētu konsultāciju un godīgām izmaksām."}]},"locations":{"eyebrow":"§ 08 — Ģeogrāfija","title1":"Projektus realizējam","title2":"visā Latvijā.","lead":"Strādājam Rīgā un visā tās apkārtnē, kā arī reģionos pēc pieprasījuma.","regions":"+ Reģioni pēc pieprasījuma","list":["Rīga","Jūrmala","Mārupe","Ķekava","Salaspils","Ogre","Babīte","Olaine","Ādaži","Carnikava","Saulkrasti","Sigulda"]},"contact":{"eyebrow":"§ 09 — Kontakti","title1":"Vēlaties","title2":"pārbūvēt?","lead":"Ātrākai un ērtākai saziņai izmantojiet kontaktformu — mūsu speciālists sazināsies ar Jums iespējami drīz.","labels":{"phone":"Tālrunis","email":"E-pasts","address":"Adrese","hours":"Darba laiks"},"addressVal":"Čiekurkalna 1. līnija 84,\nRīga, LV-1026","hoursVal":"P–P  09:00 – 18:00","whatsapp":"WhatsApp konsultācija","form":{"title":"Kontaktforma","name":"Jūsu vārds","phone":"Tālrunis","email":"E-pasts","message":"Ziņa","submit":"Nosūtīt pieprasījumu","disclaimer":"Nosūtot formu, Jūs piekrītat mūsu privātuma politikai. Sazināsimies darba dienās 9:00–18:00.","subject":(n) => `Pieprasījums no ${n || "tīmekļa lapas"}`,"bodyLabels":{"name":"Vārds","phone":"Tālrunis","email":"E-pasts"}}},"footer":{"tagline":"Sertificēts arhitektu birojs un būvkomersants Rīgā.","services":"Pakalpojumi","links":"Saites","contact":"Sazināties","bisRegistry":"BIS reģistrs","privacy":"Privātuma politika","rights":"Visas tiesības aizsargātas"}},"ru":{"nav":{"parplanosana":"Перепланировка","grids":"Бетонные полы","legalizacija":"Легализация","apvienosana":"Объединение","nesosas":"Несущие стены","lodzijas":"Лоджии","atsauksmes":"Отзывы","contact":"Контакты","whatsapp":"WhatsApp"},"hero":{"tag1":"Рига · Осн. 2011","tag2":"Сертифицированная строй. компания","title1":"Перестраиваем","title2":"квартиры","title3":"по","title4":"проекту, а не","title5":"импровизации.","lead":"Архитектурное бюро и сертифицированная строительная компания в Латвии. Проекты перепланировки, согласование и реализация — от","leadStrong":"одного рабочего дня","ctaPrimary":"Получить консультацию","ctaSecondary":"Услуги","caption1":"01 — Проект № 2177 / Агенскалнс"},"quick":[{"t":"Упрощённая перепланировка квартиры","s":"С подачей уведомления и карточкой подтверждения.","more":"Подробнее"},{"t":"Создание дверных проёмов","s":"С пояснительной запиской и инженерным решением.","more":"Подробнее"},{"t":"Остекление лоджий","s":"С присоединением к квартире или без.","more":"Подробнее"}],"why":{"eyebrow":"§ 01 — Почему Parbuve.lv","title1":"Три причины","title2":"выбрать нас.","reasons":[{"title":"Скорость","desc":"Готовые проекты в минимальные сроки — от 1 рабочего дня."},{"title":"Качество","desc":"Сертифицированная компания, сертифицированный архитектор и инженер.","linkLabel":"Проверить в реестре BIS"},{"title":"Опыт","desc":"Многолетний опыт делает нас одним из лидеров на латвийском рынке."}]},"stats":[{"v":"4 090","l":"Реализованных проектов"},{"v":"3 998","l":"Довольных клиентов"},{"v":"14","l":"Лет опыта"},{"v":"1","l":"Рабочий день минимум"}],"services":{"eyebrow":"§ 02 — Услуги","title1":"Весь процесс","title2":"под одной крышей.","lead":"От идеи до акта приёмки в эксплуатацию. Сертифицированный архитектор и инженер берут на себя всю бюрократию — вы получаете готовый, законный результат.","list":[{"title":"Перепланировка","desc":"Проект перепланировки квартиры и согласование — документы, расходы и весь процесс.","items":["Проект перепланировки","Документы и расходы","Согласование с самоуправлением"]},{"title":"Несущие стены","desc":"Создание дверных проёмов в несущих стенах с пояснительной запиской и инженерным решением.","items":["Пояснительная записка","Расчёты инженера","Решения по армированию"]},{"title":"Остекление лоджий","desc":"Остекление с присоединением к квартире или без — проект, разрешения, реализация.","items":["Проект и разрешения","С/без присоединения","Утепление"]},{"title":"Объединение квартир","desc":"Проект и полное согласование объединения двух или более квартир.","items":["Проект объединения","Решения по коммуникациям","Регистрация"]},{"title":"Легализация","desc":"Легализация уже выполненной перепланировки или перестройки и инвентаризационное дело.","items":["Легализация перепланировки","Легализация перестройки","Инвентаризационное дело"]},{"title":"Бетонные полы","desc":"Шумоизоляция, выравнивание и заливка бетонных полов в соответствии с нормами.","items":["Шумоизоляция","Выравнивание","Заливка бетона"]}]},"offers":{"eyebrow":"§ 03 — Консультации","title1":"Наше архитектурное бюро","title2":"предлагает:","lead":"Полный спектр услуг — от первой консультации до инвентаризационного дела.","items":["Проект перепланировки квартиры и согласование","Документы и расходы на перепланировку квартиры","Легализация перепланировки и инвентаризационное дело","Проект перестройки квартиры и согласование","Легализация перестройки и инвентаризационное дело","Планы и перепланировка типовых квартир","Получение согласования с подачей уведомления","Инвентаризационное дело — расходы, изготовление, заказ","Карточка подтверждения для упрощённой перестройки","Создание дверных проёмов в несущих стенах","Остекление лоджий с/без присоединения","Консультации о технических возможностях"]},"manifesto":{"eyebrow":"§ 04 — Философия","title1":"Каждая стена —","title2":"это расчёт.","lead":"Мы не работаем на догадках. Каждый рез несущей стены, каждый расширенный проём — расчёт сертифицированного инженера и согласованный проект.","bullets":["Сертифицированная компания (реестр BIS № 11881)","Сертифицированный архитектор и инженер","Полная документация и согласование с самоуправлением","Гарантия на все выполненные работы"]},"process":{"eyebrow":"§ 05 — Процесс","title1":"Четыре шага","title2":"от идеи до ключа.","step":"ШАГ","steps":[{"t":"Консультация","d":"Бесплатный разговор о вашем видении, технических возможностях квартиры и ориентировочном бюджете."},{"t":"Проект","d":"План архитектора, расчёты инженера и необходимая документация."},{"t":"Согласование","d":"Подаём и согласовываем всё в самоуправлении и системе BIS за вас."},{"t":"Реализация","d":"Наша бригада выполняет проект — чисто, безопасно и в срок."}]},"projects":{"eyebrow":"§ 06 — Избранные работы","title":"Недавние проекты","seeAll":"Смотреть все →","one":{"title":"Лоджия с присоединением","sub":"ул. Сканстес · 2-комн. квартира"},"two":{"title":"Проём в несущей стене","sub":"Пурвциемс · дом 602-й серии"}},"testimonials":{"eyebrow":"§ 07 — Отзывы","title1":"Что говорят","title2":"наши клиенты.","list":[{"name":"Анна К.","location":"Рига, Иманта","text":"Профессиональная команда — проект перепланировки был готов за 2 дня, согласование прошло без задержек."},{"name":"Янис Б.","location":"Рига, Пурвциемс","text":"Сделали дверной проём в несущей стене дома 602-й серии. Расчёты, документы и реализация — всё в одном месте."},{"name":"Марина С.","location":"Юрмала","text":"Объединили две квартиры в одну. Спасибо за детальную консультацию и честные цены."}]},"locations":{"eyebrow":"§ 08 — География","title1":"Реализуем проекты","title2":"по всей Латвии.","lead":"Работаем в Риге и её окрестностях, а также в регионах по запросу.","regions":"+ Регионы по запросу","list":["Рига","Юрмала","Марупе","Кекава","Саласпилс","Огре","Бабите","Олайне","Адажи","Царникава","Саулкрасты","Сигулда"]},"contact":{"eyebrow":"§ 09 — Контакты","title1":"Хотите","title2":"перестроить?","lead":"Для быстрой и удобной связи используйте контактную форму — наш специалист свяжется с вами в ближайшее время.","labels":{"phone":"Телефон","email":"Эл. почта","address":"Адрес","hours":"Часы работы"},"addressVal":"ул. Чиекуркалнa 1-я линия 84,\nРига, LV-1026","hoursVal":"Пн–Пт  09:00 – 18:00","whatsapp":"Консультация в WhatsApp","form":{"title":"Контактная форма","name":"Ваше имя","phone":"Телефон","email":"Эл. почта","message":"Сообщение","submit":"Отправить запрос","disclaimer":"Отправляя форму, вы соглашаетесь с нашей политикой конфиденциальности. Свяжемся в рабочие дни 9:00–18:00.","subject":(n) => `Запрос от ${n || "сайта"}`,"bodyLabels":{"name":"Имя","phone":"Телефон","email":"Эл. почта"}}},"footer":{"tagline":"Сертифицированное архитектурное бюро и строительная компания в Риге.","services":"Услуги","links":"Ссылки","contact":"Связаться","bisRegistry":"Реестр BIS","privacy":"Политика конфиденциальности","rights":"Все права защищены"}},"en":{"nav":{"parplanosana":"Replanning","grids":"Concrete floors","legalizacija":"Legalization","apvienosana":"Merging","nesosas":"Load-bearing walls","lodzijas":"Loggias","atsauksmes":"Reviews","contact":"Contact","whatsapp":"WhatsApp"},"hero":{"tag1":"Riga · Est. 2011","tag2":"Certified construction company","title1":"We rebuild","title2":"apartments","title3":"with","title4":"a project, not","title5":"improvisation.","lead":"Architecture office and certified construction company in Latvia. Replanning projects, approvals and execution — from","leadStrong":"one working day","ctaPrimary":"Get a consultation","ctaSecondary":"Services","caption1":"01 — Project No. 2177 / Āgenskalns"},"quick":[{"t":"Simplified apartment rebuild","s":"With notification submission and approval card.","more":"Learn more"},{"t":"Door opening creation","s":"With explanatory note and engineering solution.","more":"Learn more"},{"t":"Loggia glazing","s":"With or without joining the apartment.","more":"Learn more"}],"why":{"eyebrow":"§ 01 — Why Parbuve.lv","title1":"Three reasons","title2":"to choose us.","reasons":[{"title":"Speed","desc":"Ready projects in minimal time — from 1 working day."},{"title":"Quality","desc":"Certified construction company, certified architect and engineer.","linkLabel":"Verify in BIS registry"},{"title":"Experience","desc":"Years of experience make us one of the leaders in the Latvian market."}]},"stats":[{"v":"4,090","l":"Completed projects"},{"v":"3,998","l":"Satisfied clients"},{"v":"14","l":"Years of experience"},{"v":"1","l":"Working day minimum"}],"services":{"eyebrow":"§ 02 — Services","title1":"The whole process","title2":"under one roof.","lead":"From idea to acceptance certificate. A certified architect and engineer handle all bureaucracy — you get a finished, legal result.","list":[{"title":"Replanning","desc":"Apartment replanning project and approval — documents, costs and the full process.","items":["Replanning project","Documents & costs","Approval with municipality"]},{"title":"Load-bearing walls","desc":"Creating door openings in load-bearing walls with explanatory note and engineering solution.","items":["Explanatory note","Engineer calculations","Reinforcement solutions"]},{"title":"Loggia glazing","desc":"Glazing with or without joining the apartment — project, permits, execution.","items":["Project & permits","With/without joining","Insulation"]},{"title":"Apartment merging","desc":"Project and full approval for merging two or more apartments.","items":["Merging project","Utility solutions","Registration"]},{"title":"Legalization","desc":"Legalization of already done rebuilds or replanning and inventory file.","items":["Replanning legalization","Rebuild legalization","Inventory file"]},{"title":"Concrete floors","desc":"Sound insulation, leveling and concrete floor pouring according to regulations.","items":["Sound insulation","Leveling","Concrete pouring"]}]},"offers":{"eyebrow":"§ 03 — Consultations","title1":"Our architecture office","title2":"offers:","lead":"Full range of services — from the first consultation to the inventory file.","items":["Apartment replanning project and approval","Apartment replanning documents and costs","Replanning legalization and inventory file","Apartment rebuild project and approval","Apartment rebuild legalization and inventory file","Standard apartment plans and replanning","Approval with notification submission","Inventory file — costs, preparation, ordering","Approval card for simplified rebuild","Door opening creation in load-bearing walls","Loggia glazing with/without joining","Consultations on technical possibilities"]},"manifesto":{"eyebrow":"§ 04 — Philosophy","title1":"Every wall is","title2":"a calculation.","lead":"We don't work with guesses. Every cut in a load-bearing wall, every widened opening — a certified engineer's calculation and an approved project.","bullets":["Certified construction company (BIS registry No. 11881)","Certified architect and engineer","Full documentation and approval with municipality","Warranty on all completed work"]},"process":{"eyebrow":"§ 05 — Process","title1":"Four steps","title2":"from idea to keys.","step":"STEP","steps":[{"t":"Consultation","d":"Free conversation about your vision, the apartment's technical possibilities and approximate budget."},{"t":"Project","d":"Architect's plan, engineer's calculations and the required documentation."},{"t":"Approval","d":"We submit and coordinate everything with the municipality and the BIS system on your behalf."},{"t":"Execution","d":"Our construction crew delivers the project — clean, safe and on time."}]},"projects":{"eyebrow":"§ 06 — Selected work","title":"Recent projects","seeAll":"See all →","one":{"title":"Loggia with joining","sub":"Skanstes street · 2-room apartment"},"two":{"title":"Opening in load-bearing wall","sub":"Purvciems · 602-series building"}},"testimonials":{"eyebrow":"§ 07 — Reviews","title1":"What our","title2":"clients say.","list":[{"name":"Anna K.","location":"Riga, Imanta","text":"Professional team — the replanning project was ready in 2 days and approval went smoothly."},{"name":"Jānis B.","location":"Riga, Purvciems","text":"Created a door opening in a load-bearing wall of a 602-series building. Calculations, documents and execution — all in one place."},{"name":"Marina S.","location":"Jūrmala","text":"Merged two apartments into one. Thanks for the detailed consultation and fair pricing."}]},"locations":{"eyebrow":"§ 08 — Geography","title1":"We deliver projects","title2":"across all of Latvia.","lead":"We work in Riga and its surroundings, and in the regions on request.","regions":"+ Regions on request","list":["Riga","Jūrmala","Mārupe","Ķekava","Salaspils","Ogre","Babīte","Olaine","Ādaži","Carnikava","Saulkrasti","Sigulda"]},"contact":{"eyebrow":"§ 09 — Contact","title1":"Want to","title2":"rebuild?","lead":"For fast and convenient communication, use the contact form — our specialist will get back to you as soon as possible.","labels":{"phone":"Phone","email":"Email","address":"Address","hours":"Hours"},"addressVal":"Čiekurkalna 1st line 84,\nRiga, LV-1026","hoursVal":"Mon–Fri  09:00 – 18:00","whatsapp":"WhatsApp consultation","form":{"title":"Contact form","name":"Your name","phone":"Phone","email":"Email","message":"Message","submit":"Send request","disclaimer":"By submitting, you agree to our privacy policy. We reply on working days 9:00–18:00.","subject":(n) => `Request from ${n || "the website"}`,"bodyLabels":{"name":"Name","phone":"Phone","email":"Email"}}},"footer":{"tagline":"Certified architecture office and construction company in Riga.","services":"Services","links":"Links","contact":"Contact","bisRegistry":"BIS registry","privacy":"Privacy policy","rights":"All rights reserved"}}};
+let lang = (localStorage.getItem('parbuve_lang') || 'lv');
+if (!['lv','ru','en'].includes(lang)) lang = 'lv';
+
+function get(path){
+  return path.split('.').reduce((a,k)=>a&&a[k], T[lang]);
+}
+
+function fillSimple(){
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const v = get(el.dataset.t);
+    if (typeof v === 'string') el.textContent = v;
+  });
+  document.documentElement.lang = lang;
+}
+
+function renderDynamic(){
+  const t = T[lang];
+
+  // quick
+  document.getElementById('quick-grid').innerHTML = t.quick.map((q,i)=>`
+    <div class="quick-item">
+      <div class="quick-num">0${i+1}</div>
+      <h3>${q.t}</h3><p>${q.s}</p>
+      <a href="#services">${q.more}</a>
+    </div>`).join('');
+
+  // why
+  document.getElementById('why-grid').innerHTML = t.why.reasons.map((r,i)=>`
+    <div class="why-item">
+      <div class="why-num">0${i+1}</div>
+      <h3>${r.title}</h3><p>${r.desc}</p>
+      ${r.linkLabel?`<a class="lnk" target="_blank" rel="noopener" href="https://bis.gov.lv">${r.linkLabel}</a>`:''}
+    </div>`).join('');
+
+  // stats
+  document.getElementById('stats-grid').innerHTML = t.stats.map(s=>`
+    <div><div class="stat-v">${s.v}</div><div class="stat-l">${s.l}</div></div>
+  `).join('');
+
+  // services
+  document.getElementById('services-grid').innerHTML = t.services.list.map((s,i)=>`
+    <div class="service">
+      <div class="service-num">0${i+1} / 0${t.services.list.length}</div>
+      <h3>${s.title}</h3><p>${s.desc}</p>
+      <ul>${s.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+    </div>`).join('');
+
+  // offers
+  document.getElementById('offers-list').innerHTML = t.offers.items.map(x=>`<li>${x}</li>`).join('');
+
+  // manifesto
+  document.getElementById('manifesto-list').innerHTML = t.manifesto.bullets.map(x=>`<li>${x}</li>`).join('');
+
+  // process
+  document.getElementById('process-grid').innerHTML = t.process.steps.map((s,i)=>`
+    <div class="step">
+      <div class="step-n">${t.process.step} 0${i+1}</div>
+      <h3>${s.t}</h3><p>${s.d}</p>
+    </div>`).join('');
+
+  // testimonials
+  document.getElementById('t-grid').innerHTML = t.testimonials.list.map(x=>`
+    <div class="tcard"><p>"${x.text}"</p><div class="who">${x.name}</div><div class="where">${x.location}</div></div>
+  `).join('');
+
+  // locations
+  document.getElementById('loc-list').innerHTML = t.locations.list.map(x=>`<span>${x}</span>`).join('') + `<span class="more">${t.locations.regions}</span>`;
+
+  // footer services
+  document.getElementById('foot-services').innerHTML = t.services.list.map(s=>`<li><a href="#services">${s.title}</a></li>`).join('');
+}
+
+function setLang(l){
+  lang = l;
+  localStorage.setItem('parbuve_lang', l);
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  fillSimple();
+  renderDynamic();
+}
+
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click', ()=>setLang(b.dataset.lang));
+});
+
+document.getElementById('contact-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const t = T[lang].contact.form;
+  const name = f.get('name'), phone = f.get('phone'), email = f.get('email'), message = f.get('message');
+  const subject = encodeURIComponent(t.subject(name));
+  const body = encodeURIComponent(`${t.bodyLabels.name}: ${name}\n${t.bodyLabels.phone}: ${phone}\n${t.bodyLabels.email}: ${email}\n\n${message}`);
+  window.location.href = `mailto:info@parbuve.lv?subject=${subject}&body=${body}`;
+});
+
+setLang(lang);
+</script>
+</body>
+</html>
